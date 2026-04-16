@@ -1,0 +1,3 @@
+New content - old content is GONE!
+This line was appended. 
+and this one too.Added at the end with r+ 

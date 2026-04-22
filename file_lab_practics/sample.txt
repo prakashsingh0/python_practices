@@ -1,0 +1,5 @@
+Line 1: Hello, world!
+Line 2: python is awesome!
+line 3: Fiule I/O is important. 
+Line 4: This is the fourth line.
+Line 5: The end of our sample file.

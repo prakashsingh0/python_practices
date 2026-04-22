@@ -4,7 +4,7 @@ contacts = {}
 
 while True:
     print('='*50)
-    print('Choose Option (1-5): ')
+        
     print('1.Add Contact')
     print('2.Delete contact'.title())
     print('3.delete all contacts'.title())

@@ -13,9 +13,16 @@ class Customer:
         self.pan_card_no = None
         self.account_number = account_number
         self._balance = _balance
-        self._is_active = True
+        self._is_active = False
         self.transactions = []
 
+
+
+    def __str__(self):
+        return f"""\nCustomer ID: {self.customer_id}
+\nAccount number : {self.account_number}
+\nName : {self.first_name} {self.middle_name} {self.last_name}
+\nAccount Status : {'Active' if self._is_active else "Deactive"}"""
         """update customer Profile details"""
     def update_details(self,address={},dob=None,aadhar_card_no=None,pan_card_no = None):
         """Validate data"""
@@ -41,7 +48,7 @@ class Customer:
 
 
         print('*'*50)
-        
+
 
     """Diposit amount"""
     def diposit(self,amount:float):

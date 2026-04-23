@@ -115,12 +115,18 @@ while start:
                                     if credit:
                                         print("Money Transfer successfully")
         
-                    if choice == 4:
-                        customer[0].update_details(aadhar_card_no='987976')
+                    if option == 4:
+                        address = input("Enter Customer address: ")
+                        pan_card_no = input("Enter pan no.: ")
+                        aadhar_card_no = input("Enter aadhar card no. : ")
+                        dob = input("Enter Date of birth: ")
+                        customer[0].update_details(address=address,dob=dob,aadhar_card_no=aadhar_card_no,pan_card_no =pan_card_no )
                         print(customer[0]._is_active)
-                    if choice ==5:
-                        customer[0].get_profile()
-
+                        
+                    if option == 5:
+                       
+                       profile =  customer[0].get_profile()
+                       print(profile)
         if choice ==3:
             print('Select bank: ')
             print('-'*50)

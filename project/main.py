@@ -96,17 +96,22 @@ while start:
                             selected = int(selected)
                             selected_bank =banks[selected]
                             print(selected_bank)
-                        
-                            customer_id = int(input("Enter customer id: "))
                             """take input to customer id"""
-                            customer_id = input("Enter other customer id: ")
-                            amount = input("Please Enter amount: ")
-                            to_customer = [i for i in selected_bank._customer_details if i.customer_id == customer_id]
+                            customer_id = int(input("Enter other customer id: "))
+                            amount = float(input("Please Enter amount: "))
+                            print(selected_bank._customer_details)
+                            to_customer = None
+                            for i in selected_bank._customer_details:
+                                print(i.customer_id)
+                                if i.customer_id == customer_id:
+                                    to_customer = i
+                            
+                            # to_customer = [i for i in selected_bank._customer_details if i.customer_id == customer_id]
                             print(to_customer)
-                            if to_customer[0]:
+                            if to_customer:
                                 debit = customer[0].withdraw(amount=amount)
                                 if debit:
-                                    credit = to_customer[0].diposit(amount=amount)
+                                    credit = to_customer.diposit(amount=amount)
                                     if credit:
                                         print("Money Transfer successfully")
         

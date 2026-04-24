@@ -1,5 +1,5 @@
 from customer import Customer
-
+from csv import reader, DictReader,DictWriter,writer
 
 
 class Bank:
@@ -48,3 +48,15 @@ class Bank:
     
     def get_stats(self):
         pass
+    def export_data(self):
+        file_name = self.name
+        with open(f'{file_name}.csv','w') as file:
+            header = ["first_name","middle_name","last_name","email","phone","account_type","address","dob","aadhar_card_no","pan_card_no","account_number","_balance","_is_active"]
+            csv_writer = DictWriter(file,fieldnames=header)
+            csv_writer.writeheader()
+            
+            for customer in self._customer_details:
+                csv_writer.writerow(
+                    {"first_name":customer.first_name,"middle_name":customer.middle_name,"last_name":customer.last_name,"email":customer.email,"phone":customer.phone,"account_type":customer.account_type,"address":customer.address,"dob":customer.dob,"aadhar_card_no":customer.aadhar_card_no,"pan_card_no":customer.pan_card_no,"account_number":customer.account_number,"_balance":customer._balance,"_is_active":customer._is_active}
+                    )
+                print(f'file export successfully file name : {file_name+'.csv'}')

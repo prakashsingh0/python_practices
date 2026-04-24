@@ -25,7 +25,8 @@ while start:
     print('2: Net Banking')
     print('3: Create new Account')
     print('4: Remove Customer')
-    print("5: Update Customer Profile")
+    print("5: Bank's Detail")
+    print('6: Quite to system')
 
     choice = input("Enter Your choice: ")
     has_no = choice.isnumeric()
@@ -106,7 +107,7 @@ while start:
                                 if i.customer_id == customer_id:
                                     to_customer = i
                             
-                            # to_customer = [i for i in selected_bank._customer_details if i.customer_id == customer_id]
+                           
                             print(to_customer)
                             if to_customer:
                                 debit = customer[0].withdraw(amount=amount)
@@ -158,5 +159,36 @@ while start:
                 customers = selected_bank.list_all_cunstomers()
                 print(customers)
         if choice==4:
-            start = False
+            print("Select bank")
+            for index in range(len(banks)):
+                print(f'Option:- {index} - {banks[index]}')
+
+            selected = input("Please select i option : ")
+            selected_no = selected.isnumeric()
+            if selected_no:
+                selected = int(selected)
+                selected_bank =banks[selected]
+                customer_id = int(input("Enter customer id to account cloase: "))
+                """search customer by id"""
+                for i in selected_bank._customer_details:
+                    
+                    if customer_id == i.customer_id:
+                        selected_bank._customer_details.remove(i)
+                        print(f'{customer_id} id closed account')
+                    else:
+                        print(f'id {customer_id} not found! \nplease enter valied customer id')
+
+        if choice == 5:
+            print("Select bank : ")
+            for index in range(len(banks)):
+                print(f'Opiton : {index} {banks[index]}')
+            selected = input("Please select any option : ")
+            selected_no = selected.isnumeric()
+            if selected_no:
+                selected = int(selected)
+                bank = banks[selected]
+                bank.export_data()
+        if choice == 6:
+            print("thanks for using us!")
+            break
 

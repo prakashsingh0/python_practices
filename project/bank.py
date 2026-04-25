@@ -19,7 +19,7 @@ class Bank:
     def __str__(self):
         return f'{self.name} | {self.branch} | {self.ifsc}'
     """Create a new Customer"""
-    def add_customer(self,first_name:str,middle_name:str, last_name:str,email:Str,phone:str,account_type:str):
+    def add_customer(self,first_name:str,middle_name:str, last_name:str,email:str,phone:str,account_type:str):
         customer = Customer(first_name,middle_name,last_name,email,phone,account_type,account_number=self.next_account_number,customer_id=self._next_id)
         self._next_id += 1  
         self.next_account_number += 1

@@ -25,8 +25,10 @@ class Customer:
 \nAccount number : {self.account_number}
 \nName : {self.first_name} {self.middle_name} {self.last_name}
 \nAccount Status : {'Active' if self._is_active else "Deactive"}"""
+    
+
     """update customer Profile details"""
-    def update_details(self,address={},dob=None,aadhar_card_no=None,pan_card_no = None):
+    def update_details(self,address=None,dob=None,aadhar_card_no=None,pan_card_no = None):
         """Validate data"""
         if dob is not None:     
             self.dob = dob

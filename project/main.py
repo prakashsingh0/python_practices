@@ -28,7 +28,7 @@ while start:
         print('3: Create new Account')
         print('4: Remove Customer')
         print("5: Bank's Detail")
-        print("6: Find Customer")
+        print("6: Find Customer and bank details")
         print('7: Quite to system')
 
         choice = input("Enter Your choice: ")

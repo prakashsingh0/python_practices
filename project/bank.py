@@ -30,14 +30,35 @@ class Bank:
     
     def remove_customer(self):
         pass
-
-    def find_by_id(self):
-        pass
+    """find customer by customer id, if customer get then return customer object"""
+    def find_by_id(self,customer_id):
+        
+        for i in self._customer_details:
+            
+            if i.customer_id == customer_id:
+                
+                return i
+            # else:
+            #     return f"please enter valid id"
     
+    """find customer by account number if get customer then return customer opject else error"""
     def find_by_acc_no(self,acc_no:str):
-        pass
+        try:
+            for i in self._customer_details:
+                print(type(i.account_number))
+                if i.account_number == acc_no:
+                    return i
+                # else:
+                #     raise ValueError("Please Enter valid account number!")
+        except Exception as e:
+            return e
+            """find customer by name and return a list """
     def search_by_name(self,name:str):
-        pass
+        customers = []
+        for customer in self._customer_details:
+            if customer.first_name == name or customer.middle_name == name or customer.last_name == name:
+                customers.append(customer)
+        return customers
 
     def list_all_cunstomers(self):
         return self._customer_details

@@ -1,4 +1,5 @@
 from bank import Bank
+from address import Address
 
 banks = []
 
@@ -121,7 +122,16 @@ while start:
                                             print("Money Transfer successfully")
 
                         if option == 4:
-                            address = input("Enter Customer address: ")
+                            street = input("street: ")
+                            city = input("City : ")
+                            state = input("State : ")
+                            zip_code = input("Zip code : ")
+                            address = None
+                            if street and city and  state and  zip_code:
+                                address = Address(street, city, state, zip_code)
+                            else:
+                                print("All field are required!")
+                            
                             pan_card_no = input("Enter pan no.: ")
                             aadhar_card_no = input("Enter aadhar card no. : ")
                             dob = input("Enter Date of birth: ")

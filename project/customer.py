@@ -9,7 +9,7 @@ class Customer:
         self.email = email
         self.phone = phone
         self.account_type = account_type
-        self.address = {}
+        self.address = None
         self.dob = None
         self.aadhar_card_no = None
         self.pan_card_no = None

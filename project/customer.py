@@ -52,8 +52,8 @@ class Customer:
         print('*'*50)
 
 
-    """Diposit amount"""
-    def diposit(self,amount:float):
+    """Deposit amount"""
+    def deposit(self,amount:float):
         try:
           if self._is_active:
             if amount<= 0 :
@@ -81,7 +81,7 @@ class Customer:
     # def transfer(amount, to_customer:id):
     #     debit = withdraw(amount)
     #     if debit:
-    #         diposite()
+    #         deposite()
     #     pass
 
     def get_statement(self):

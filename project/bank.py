@@ -18,7 +18,7 @@ class Bank:
 
     def __str__(self):
         return f'{self.name} | {self.branch} | {self.ifsc}'
-
+    """Create a new Customer"""
     def add_customer(self,first_name:str,middle_name:str, last_name:str,email:Str,phone:str,account_type:str):
         customer = Customer(first_name,middle_name,last_name,email,phone,account_type,account_number=self.next_account_number,customer_id=self._next_id)
         self._next_id += 1  
@@ -38,8 +38,8 @@ class Bank:
             if i.customer_id == customer_id:
                 
                 return i
-            # else:
-            #     return f"please enter valid id"
+            else:
+                print(f"please enter valid id")
     
     """find customer by account number if get customer then return customer opject else error"""
     def find_by_acc_no(self,acc_no:str):
@@ -48,27 +48,34 @@ class Bank:
                 print(type(i.account_number))
                 if i.account_number == acc_no:
                     return i
-                # else:
-                #     raise ValueError("Please Enter valid account number!")
+                else:
+                    print("Please Enter a valie account number")
+               
         except Exception as e:
             return e
-            """find customer by name and return a list """
+        """find customer by name and return a list """
     def search_by_name(self,name:str):
         customers = []
         for customer in self._customer_details:
             if customer.first_name == name or customer.middle_name == name or customer.last_name == name:
                 customers.append(customer)
         return customers
-
+    """all customer in bank"""
     def list_all_cunstomers(self):
         return self._customer_details
         
-    
+    """total amount in bank"""
     def total_deposits(self):
-        pass
+        
+        total = 0
+        for customer in self._customer_details:
+            total += customer._balance
+        return total
+            
     
     def get_stats(self):
         pass
+    """export data in csv format"""
     def export_data(self):
         file_name = self.name
         with open(f'{file_name}.csv','w') as file:
@@ -80,4 +87,4 @@ class Bank:
                 csv_writer.writerow(
                     {"first_name":customer.first_name,"middle_name":customer.middle_name,"last_name":customer.last_name,"email":customer.email,"phone":customer.phone,"account_type":customer.account_type,"address":customer.address,"dob":customer.dob,"aadhar_card_no":customer.aadhar_card_no,"pan_card_no":customer.pan_card_no,"account_number":customer.account_number,"_balance":customer._balance,"_is_active":customer._is_active}
                     )
-                print(f'file export successfully file name : {file_name+'.csv'}')
+            print(f'file export successfully file name : {file_name+'.csv'}')

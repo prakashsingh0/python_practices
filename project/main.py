@@ -69,7 +69,7 @@ while start:
                 # selection = True
                 # while selection:
                     print('Select option:')
-                    print("1: Cash Diposit")
+                    print("1: Cash Deposit")
                     print("2: Withdraw")
                     print("3: Money Transfer")
                     print("4: update Profile")
@@ -82,12 +82,14 @@ while start:
                         #convert into integer 
                         option = int(option)
                         if option == 1:
-                            print('option 1')
+                            amount = float(input("Enter deposit amount : "))
                             print(customer[0]._is_active)
-                            customer[0].diposit(100)
+                            customer[0].deposit(amount)
                             print(customer[0]._balance)
                         if option ==2:
-                            print('option 1')
+                            amount = float(input("Enter withdral amount: "))
+                            status = customer[0].withdraw(amount)
+                            print(f'{'Transation Successfully' if status else status}')
                         if option ==3:
                             """display all bank in from the list"""
                             for index in range(len(banks)):
@@ -114,7 +116,7 @@ while start:
                                 if to_customer:
                                     debit = customer[0].withdraw(amount=amount)
                                     if debit:
-                                        credit = to_customer.diposit(amount=amount)
+                                        credit = to_customer.deposit(amount=amount)
                                         if credit:
                                             print("Money Transfer successfully")
 
@@ -207,7 +209,7 @@ while start:
                     print("1 : Find customer by id")
                     print("2 : Find customer by account number")
                     print("3 : Find customer by name")
-
+                    print("4: Check Total Amount in bank")
                     option = int(input("Enter a number (1-3): "))
                     """Search customer by customer id"""
                     if option == 1:
@@ -226,6 +228,9 @@ while start:
 
                         for customer in customers:
                             print(f'{customer}')
+                    if option == 4:
+                        amount = selected_bank.total_deposits()
+                        print(f'{selected_bank.name} total amount {amount}')
             if choice == 7:
                 print("thanks for using us!")
                 break

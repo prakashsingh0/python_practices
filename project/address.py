@@ -5,5 +5,10 @@ class Address:
         self.street = street
         self.city = city
         self.state = state
-        self.state = zip_code
+        self.zip_code = zip_code
+
         
+
+    def format_address(self):
+        """Return formatted address String."""
+        return f'Street : {self.street} \nCity : {self.city} \nState : {self.state} \nZip Code : {self.zip_code}'

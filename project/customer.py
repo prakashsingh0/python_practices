@@ -51,6 +51,8 @@ class Customer:
         print(f'Name : {self.first_name} {self.middle_name} {self.last_name}')
         print(f'Account balance : {self._balance}')
         print(f'Phone Number : {self.phone}')
+        print(f'Address : {self.address.format_address()}')
+
         print(f'Account Status : {'Active' if self._is_active else "Deactive"} ')
 
 

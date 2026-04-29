@@ -71,7 +71,7 @@ class Customer:
                 raise ValueError("Amount must be Greater then 0")
             if amount >= 0:
                 self._balance += amount
-                date_today = datetime.datetime.now().strftime("%y-%m-%d")
+                date_today = datetime.datetime.now().strftime("%d-%m-%y")
                 current_time = datetime.datetime.now().strftime("%H:%M:%S")
                 self.transactions.append({"Date":date_today, "time":current_time, "status":"Credit", "Amount":amount})
                 return True
@@ -88,7 +88,7 @@ class Customer:
                 raise ValueError("Amount must be greater then 0")
             if amount <= self._balance and amount >= 0:
                 self._balance -= amount
-                date_today = datetime.datetime.now().strftime("%y-%m-%d")
+                date_today = datetime.datetime.now().strftime("%d-%m-%y")
                 current_time = datetime.datetime.now().strftime("%H:%M:%S")
                 self.transactions.append({"Date":date_today, "time":current_time, "status":"Debit", "Amount":amount})
                 return True
@@ -104,7 +104,7 @@ class Customer:
     def get_statement(self):
         #return csv file
         file_name = self.first_name
-        with open(f'{file_name}_statement.csv','w') as file:
+        with open(f'{file_name}_statement.csv','w',newline='') as file:
             header = ["Date","time","status","Amount"]
             csv_writer = DictWriter(file, fieldnames=header)
             csv_writer.writeheader()

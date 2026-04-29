@@ -78,7 +78,7 @@ class Bank:
     """export data in csv format"""
     def export_data(self):
         file_name = self.name
-        with open(f'{file_name}.csv','w') as file:
+        with open(f'{file_name}.csv','w',newline='') as file:
             header = ["first_name","middle_name","last_name","email","phone","account_type","address","dob","aadhar_card_no","pan_card_no","account_number","_balance","_is_active"]
             csv_writer = DictWriter(file,fieldnames=header)
             csv_writer.writeheader()

@@ -75,6 +75,7 @@ while start:
                     print("3: Money Transfer")
                     print("4: update Profile")
                     print("5: show Profile")
+                    print("6: Download statement")
                     option = input("Please select any above otpion (1-4): ")
                     #check input is number or not
                     option_is_no = option.isnumeric()
@@ -84,14 +85,15 @@ while start:
                         option = int(option)
                         if option == 1:
                             amount = float(input("Enter deposit amount : "))
-                            print(customer[0]._is_active)
-                            customer[0].deposit(amount)
-                            print(customer[0]._balance)
+                            # print(customer[0]._is_active)
+                            status = customer[0].deposit(amount)
+                            print(f'{'Transaction seccessfull' if status else 'transation failed'}')
+                            print(f'Currect balance: {customer[0]._balance}')
                         if option ==2:
                             amount = float(input("Enter withdral amount: "))
                             status = customer[0].withdraw(amount)
-                            print(f'{'Transation Successfully' if status else status}')
-                        if option ==3:
+                            print(f'{'Transation Successfull' if status else status}')
+                        if option == 3:
                             """display all bank in from the list"""
                             for index in range(len(banks)):
                                 print(f'Option:- {index} - {banks[index]}')
@@ -142,6 +144,9 @@ while start:
                         
                            profile =  customer[0].get_profile()
                            print(profile)
+                        if option == 6:
+                            statement = customer[0].get_statement()
+                            print(statement)
             if choice ==3:
                 print('Select bank: ')
                 print('-'*50)

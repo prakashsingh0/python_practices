@@ -28,6 +28,21 @@ class Customer:
 \nName : {self.first_name} {self.middle_name} {self.last_name}
 \nAccount Status : {'Active' if self._is_active else "Deactive"}"""
     
+    
+    def ckech_email(self,email):
+        try:
+            has_dot = '.' in email
+            at_count = email.count('@') 
+            at_has = False
+            if at_count == 1:
+                at_count = True
+            if has_dot and at_has:
+                return True
+            else:
+                return False
+            
+        except Exception as e:
+            return e
 
     """update customer Profile details"""
     def update_details(self,address=None,dob=None,aadhar_card_no=None,pan_card_no = None):

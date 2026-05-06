@@ -122,6 +122,9 @@ while start:
                                         credit = to_customer.deposit(amount=amount)
                                         if credit:
                                             print("Money Transfer successfully")
+                                        else:
+                                            customer[0].deposit(amount=amount)
+                                            print(f'transaction failed amount {amount} return')
 
                         if option == 4:
                             street = input("street: ")
@@ -196,7 +199,7 @@ while start:
                             print(f'{customer_id} id closed account')
                         else:
                             print(f'id {customer_id} not found! \nplease enter valied customer id')
-
+            """export bank details"""
             if choice == 5:
                 print("Select bank : ")
                 for index in range(len(banks)):
@@ -207,6 +210,8 @@ while start:
                     selected = int(selected)
                     bank = banks[selected]
                     bank.export_data()
+
+            """view customer and bank details"""
             if choice == 6:
                 print("Select bank: ")
                 print('-'*20)

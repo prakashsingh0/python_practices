@@ -52,7 +52,7 @@ class Customer:
         if address is not None:
             self.address = address
         if aadhar_card_no is not None:
-            self.aadhar_card_no = address
+            self.aadhar_card_no = aadhar_card_no
         if pan_card_no is not None:
             self.pan_card_no  = pan_card_no
         if self.aadhar_card_no:

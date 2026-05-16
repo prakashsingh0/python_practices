@@ -3,10 +3,11 @@ host = "10.122.151.220"
 username = "ubuntuserver"
 password = "text123"
 commands = [
-    "sudo apt update",
-    "sudo apt install nginx -y",
-    "sudo systemctl start nginx",
-    "sudo systemctl enable nginx"
+    
+    "lscpu",
+    "uname -a",
+    "hostnamectl",
+    "df -h"
 ]
 
 client = paramiko.SSHClient()
@@ -19,7 +20,7 @@ for cmd in commands:
     print(f'\nRunning {cmd}')
     stdin,stdout,stderr = client.exec_command(cmd, get_pty=True)
 
-    stdin.write(password + "\n")
+    # stdin.write(password + "\n")
     stdin.flush()
 
     print(stdout.read().decode())

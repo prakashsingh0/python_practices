@@ -3,21 +3,6 @@ from address import Address
 
 banks = []
 
-# sbi = Bank("State Bank of India","dadar","SBI0001")
-
-# bob = Bank("State Bank of India","dadar","SBI0001")
-# sbi.add_customer('prakash', 'singh','kshatreeya','singh@gmil.com','7000505020','saving')
-#
-# bob.add_customer('shiv', 'dev','prabhu','singh@gmil.com','7000505020','saving')
-#
-# sbi_customers = sbi.list_all_cunstomers()
-#
-# bob_customer = bob.list_all_cunstomers()
-#
-# print(sbi_customers)
-#
-# print(bob_customer)
-
 start = True
 while start:
     try:

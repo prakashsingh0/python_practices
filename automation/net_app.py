@@ -26,7 +26,7 @@ SP_PASSWORD = "sppassword"
 
 HALT_CMD = (
     "system node halt "
-    "-node node1,node2 "
+    "-node BDB_NAS-01,BDB_NAS-02 "
     "-skip-lif-migration-before-shutdown true "
     "-ignore-quorum-warnings true "
     "-inhibit-takeover true"
@@ -322,4 +322,6 @@ for node_name, sp_ip in sp_data.items():
 # COMPLETE
 # =====================================================
 
+print("="*50)
 print("\nMaintenance shutdown verification completed.")
+print("="*50)

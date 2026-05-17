@@ -23,7 +23,8 @@ HALT_CMD = (
     "-node BDB_NAS-01,BDB_NAS-02 "
     "-skip-lif-migration-before-shutdown true "
     "-ignore-quorum-warnings true "
-    "-inhibit-takeover true"
+    "-inhibit-takeover true "
+    "-ignore-strict-sync-warnings true"
 )
 
 AUTOSUPPORT_CMD = (

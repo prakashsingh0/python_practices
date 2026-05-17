@@ -2,9 +2,7 @@ import paramiko
 import time
 
 
-# =====================================================
 # CLUSTER CONFIG
-# =====================================================
 
 CLUSTER_IP = "172.31.7.231"
 
@@ -12,17 +10,13 @@ CLUSTER_USERNAME = "admin"
 CLUSTER_PASSWORD = "clusterpassword"
 
 
-# =====================================================
 # SP/BMC CONFIG
-# =====================================================
 
 SP_USERNAME = "admin"
 SP_PASSWORD = "sppassword"
 
 
-# =====================================================
 # COMMANDS
-# =====================================================
 
 HALT_CMD = (
     "system node halt "
@@ -39,9 +33,7 @@ AUTOSUPPORT_CMD = (
 )
 
 
-# =====================================================
 # GENERIC SSH CONNECTION
-# =====================================================
 
 def create_ssh_connection(host, username, password):
 
@@ -61,9 +53,7 @@ def create_ssh_connection(host, username, password):
     return ssh
 
 
-# =====================================================
 # SEND COMMAND
-# =====================================================
 
 def send(shell, command, wait=3):
 
@@ -80,9 +70,7 @@ def send(shell, command, wait=3):
     return output
 
 
-# =====================================================
 # CONNECT TO CLUSTER
-# =====================================================
 
 print(f"\nConnecting to cluster {CLUSTER_IP}...")
 
@@ -101,9 +89,7 @@ cluster_shell.recv(65535)
 print("\nConnected to cluster.")
 
 
-# =====================================================
 # HEALTH CHECKS
-# =====================================================
 
 cluster_output = send(cluster_shell, "cluster show")
 
@@ -128,18 +114,16 @@ send(cluster_shell, "system health alert show")
 send(cluster_shell, "job show")
 
 
-# =====================================================
+
 # ENABLE AUTOSUPPORT MAINTENANCE MODE
-# =====================================================
+
 
 print("\nEnabling AutoSupport maintenance mode...")
 
 send(cluster_shell, AUTOSUPPORT_CMD)
 
 
-# =====================================================
 # GET SP/BMC INFORMATION
-# =====================================================
 
 print("\nRetrieving SP/BMC addresses...")
 
@@ -149,9 +133,7 @@ sp_output = send(
 )
 
 
-# =====================================================
 # PARSE NODE NAME + SP IP
-# =====================================================
 
 sp_data = {}
 
@@ -171,17 +153,15 @@ for line in lines:
 
             sp_data[node_name] = ip_address
 
-
+print("*"*50)
 print("\nDetected SP Information:")
 
 for node_name, sp_ip in sp_data.items():
-
+    print("-"*50)
     print(f"{node_name} -> {sp_ip}")
 
 
-# =====================================================
 # FINAL CONFIRMATION
-# =====================================================
 
 confirm = input(
     "\nProceed with FULL CHASSIS SHUTDOWN? (yes/no): "
@@ -196,10 +176,9 @@ if confirm.lower() != "yes":
     exit()
 
 
-# =====================================================
 # SHUTDOWN CLUSTER
-# =====================================================
 
+print("-"*50)
 print("\nSending halt command...")
 
 cluster_shell.send(HALT_CMD + "\n")
@@ -214,8 +193,9 @@ time.sleep(5)
 try:
 
     output = cluster_shell.recv(65535).decode()
-
+    print("="*50)
     print(output)
+    print("="*50)
 
 except:
     pass
@@ -225,18 +205,15 @@ print("\nCluster shutdown initiated.")
 cluster_ssh.close()
 
 
-# =====================================================
 # WAIT BEFORE SP CONNECTION
-# =====================================================
 
+print("="*50)
 print("\nWaiting 60 seconds before connecting to SPs...")
-
+print("="*50)
 time.sleep(60)
 
 
-# =====================================================
 # CONNECT TO EACH SP
-# =====================================================
 
 for node_name, sp_ip in sp_data.items():
 
@@ -318,9 +295,7 @@ for node_name, sp_ip in sp_data.items():
         )
 
 
-# =====================================================
 # COMPLETE
-# =====================================================
 
 print("="*50)
 print("\nMaintenance shutdown verification completed.")
